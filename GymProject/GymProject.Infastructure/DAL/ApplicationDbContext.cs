@@ -15,7 +15,7 @@ public class AppDbContext : IdentityDbContext<AppUser>
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        optionsBuilder.UseNpgsql("Host=localhost;Port=5432;Database=postgresv5;Username=postgres;Password=Admin123@");
+        optionsBuilder.UseNpgsql("Host=localhost;Port=5432;Database=postgresv5;Username=postgres;Password=Admin123@"); //TODO change connection string -> Username= and Password= 
         base.OnConfiguring(optionsBuilder);
     }
 
