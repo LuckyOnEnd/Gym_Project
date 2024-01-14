@@ -1,0 +1,78 @@
+@page "/Memberships"
+@using ThePowerSPAv2.ViewModels.Memberships
+@using GymProject.SPA.Features.Auth.Services
+@inject MembershipViewModel ViewModel
+@inject NavigationManager _NavigationManager
+
+@if (!ViewModel.IsLoading && ViewModel.Memberships.Count > 0)
+{
+<section class="subscriptions none1">
+    <div class="container">
+
+        <div class="subscriptions__title">
+            <h2 class="title-2">Our subscriptions</h2>
+        </div>
+
+        <div class="subscriptions__cards">
+            <a @onclick="@( () => Navigate(ViewModel.Memberships[0].Id) )" class="card">
+                <img class="card__img" src="./img/cards/01.jpg" alt="”">
+                <h3 class="card__title">@ViewModel.Memberships[0].Name</h3>
+                <h4 class="card__title2">Price: @ViewModel.Memberships[0].Price$</h4>
+            </a>
+
+            <a @onclick="@( () => Navigate(ViewModel.Memberships[1].Id) )" class="card">
+                <img class="card__img" src="./img/cards/02.jpg" alt="">
+                <h3 class="card__title">@ViewModel.Memberships[1].Name$</h3>
+                <h4 class="card__title2">Price: @ViewModel.Memberships[1].Price$</h4>
+            </a>
+
+            <a @onclick="@( () => Navigate(ViewModel.Memberships[2].Id) )" class="card">
+                <img class="card__img" src="./img/cards/03.jpg" alt="">
+                <h3 class="card__title">@ViewModel.Memberships[2].Name$</h3>
+                <h4 class="card__title2">Price: @ViewModel.Memberships[2].Price$</h4>
+            </a>
+
+            <a @onclick="@( () => Navigate(ViewModel.Memberships[3].Id) )" class="card">
+                <img class="card__img" src="./img/cards/04.jpg" alt="">
+                <h3 class="card__title">@ViewModel.Memberships[3].Name$</h3>
+                <h4 class="card__title2">Price: @ViewModel.Memberships[3].Price$</h4>
+            </a>
+
+            <a @onclick="@( () => Navigate(ViewModel.Memberships[4].Id) )" class="card">
+                <img class="card__img" src="./img/cards/05.jpg" alt="”">
+                <h3 class="card__title">@ViewModel.Memberships[4].Name$</h3>
+                <h4 class="card__title2">Price: @ViewModel.Memberships[4].Price$</h4>
+            </a>
+
+            <a @onclick="@( () => Navigate(ViewModel.Memberships[5].Id) )" class="card">
+                <img class="card__img" src="./img/cards/06.jpg" alt="”">
+                <h3 class="card__title">@ViewModel.Memberships[5].Name$</h3>
+                <h4 class="card__title2">Price: @ViewModel.Memberships[4].Price$</h4>
+            </a>
+        </div>
+    </div>
+</section>
+}
+
+@code{
+    protected override async Task OnInitializedAsync()
+    {
+        await ViewModel.OnInitializedAsync();
+        await base.OnInitializedAsync();
+    }
+
+    private async Task Navigate(Guid id)
+    {
+        try
+        {
+            var memebership = await ViewModel.GetByIdAsync(id);
+            _NavigationManager.NavigateTo($"/accept/{ViewModel.Memberships[5].Id}");
+        }
+        catch (Exception ex)
+        {
+            _NavigationManager.NavigateTo($"/sign-in");
+        }
+        
+    }
+}
+
