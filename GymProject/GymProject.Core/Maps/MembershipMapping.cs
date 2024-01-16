@@ -14,15 +14,5 @@ namespace GymProject.Core.Maps
                 Price = membership.Price,
                 Duration = membership.Duration
             };
-
-        internal static Subscription MapToEntity(MembershipDTO membershipDTO)
-            => new()
-            {
-                Id = membershipDTO.Id,
-                Name = membershipDTO.Name,
-                Description = membershipDTO.Description,
-                Price = membershipDTO.Price,
-                Duration = membershipDTO.Duration
-            };
     }
 }

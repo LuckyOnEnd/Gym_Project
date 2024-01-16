@@ -1,7 +1,6 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using GymProject.Core.Auth;
-using GymProject.Core.Helpers.Emails;
 using GymProject.Core.Services;
 
 namespace GymProject.Core;

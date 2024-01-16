@@ -18,21 +18,4 @@ public class MembershipRepository : IMembershipRepository
     
     public async Task<Subscription> GetAsync(Guid Id)
        => await _dbContext.Memberships.FirstOrDefaultAsync(o => o.Id == Id);
-    public async Task AddAsync(Subscription subscription)
-    {
-        await _dbContext.Memberships.AddAsync(subscription);
-        await _dbContext.SaveChangesAsync();
-    }
-
-    public async Task DeleteAsync(Subscription subscription)
-    {
-        _dbContext.Memberships.Remove(subscription);
-		await _dbContext.SaveChangesAsync();
-	}
-
-	public async Task UpdateAsync(Subscription subscription)
-	{
-		_dbContext.Memberships.Update(subscription);
-        await _dbContext.SaveChangesAsync();
-	}
 }

@@ -25,17 +25,5 @@ namespace GymProject.API.Controllers
 		[HttpGet("get"), Authorize]
 		public async Task<MembershipDTO> GetAsync([FromQuery] GetMembershipQuery query)
 			=> await _mediator.Send(query);
-		
-		[HttpPost("add"), Authorize]
-		public async Task AddAsync([FromBody] AddMembershipCommand command)
-			=> await _mediator.Send(command);
-		
-		[HttpDelete("delete"), Authorize]
-		public async Task RemoveAsync([FromBody] DeleteMembershipCommand command)
-			=> await _mediator.Send(command);
-		
-		[HttpPut("update"), Authorize]
-		public async Task UpdateAsync([FromBody] UpdateMembershipCommand command)
-			=> await _mediator.Send(command);
 	}
 }

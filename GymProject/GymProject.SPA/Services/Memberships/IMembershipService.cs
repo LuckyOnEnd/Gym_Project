@@ -6,7 +6,4 @@ public interface IMembershipService
 {
     Task<IEnumerable<MembershipModel>> GetAllAsync();
     Task<MembershipModel> GetByIdAsync(Guid id);
-	Task UpdateAsync(MembershipModel mbpDto);
-	Task AddAsync(MembershipModel mbpDto);
-	Task DeleteAsync(Guid Id);
 }
